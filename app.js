@@ -28,7 +28,9 @@ spotifyApi
 // Our routes go here:
 
 app.get("/", (req, res) => {
-  res.render("search.hbs")
+  res.render("partials/search",{
+    style: "style.css"
+  })
 })
 
 app.get("/artist-search", (req, res) => {
@@ -37,8 +39,9 @@ app.get("/artist-search", (req, res) => {
     .then(data => {
       //console.log('The received data from the API: ', data.body.artists.items[0]);
       let allArtists = data.body.artists.items
-      res.render("artist-search-results.hbs", {
-        allArtists
+      res.render("partials/artist-search-results", {
+        allArtists: allArtists,
+        style: "style.css"
       })
 
     })
@@ -51,8 +54,9 @@ app.get("/albums/:id", (req, res) => {
     .then(data => {
       //console.log('The received data from the API: ', data.body.items[0].images);
       let allAlbums = data.body.items
-      res.render("albums.hbs", {
-        allAlbums
+      res.render("partials/albums", {
+        allAlbums: allAlbums,
+        style: "style.css"
       })
 
     })
@@ -65,8 +69,9 @@ app.get("/album/:id/tracks", (req, res) => {
     .then(data => {
       //console.log('The received data from the API: ', data.body.items.preview_url);
       let allTracks = data.body.items
-      res.render("tracks.hbs", {
-        allTracks
+      res.render("partials/tracks", {
+        allTracks:allTracks,
+        style: "style.css"
       })
 
     })
