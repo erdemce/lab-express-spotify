@@ -1,0 +1,15 @@
+<div>
+<div class="space title">
+        <h3>Title</h3>
+        <h3>Listen</h3>
+</div>
+{{#each allTracks}}
+<div class="space">
+        <h3>{{this.name}}</h3>
+        <h3><audio controls>
+                        <source src="{{this.preview_url}}">
+                </audio></h3>
+</div>
+{{/each}}
+</div>
+
